@@ -1,13 +1,18 @@
 package com.mindex.challenge.data;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import java.util.List;
 
 public class Employee {
+    @Id // these weren't here in the code I was given which gave me a lot of nulls!
     private String employeeId;
     private String firstName;
     private String lastName;
     private String position;
     private String department;
+
+    @DBRef(lazy=true)
     private List<Employee> directReports;
 
     public Employee() {
